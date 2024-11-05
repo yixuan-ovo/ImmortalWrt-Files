@@ -103,6 +103,9 @@ openclash复写设置：
 
 DNS设置：
 勾选自定义dns服务器、追加上游dns、Fake-IP-Filter
+若为桥接模式，暂定不需要勾选自定义dns服务器，可能会导致软件刚打开解析dns时间过长
+由此推断若为路由模式，则只需要自定义dns服务器为光猫dns，不需要追加上游dns
+2024.11.4取消勾选自定义服务器，保留追加上游dns不需要等待
 
 Meta设置：
 勾选启用TCP并发、启用统一延迟（为了测速好看，可开可不开）、Fake-IP持久化、启用流量(域名)探测、探测(嗅探)纯IP连接
@@ -115,10 +118,16 @@ Meta设置：
 找到下方一行，将最后的true改成false，取消注释，嗅探TLS作用为：？
 ruby_edit "$CONFIG_FILE" "['experimental']" "{'sniff-tls-sni'=>false}"
 
-openclash配置订阅【漏网之鱼不能选全球直连！选择直连会泄露DNS。此时在绕过大陆ip选项的作用下，国内ip不会走clash内核】测试dns泄露网站：https://ipleak.net/
+openclash配置订阅【漏网之鱼不能选全球直连！选择直连会泄露DNS。此时在绕过大陆ip选项的作用下，国内ip不会走clash内核】
+测试dns泄露网站：https://ipleak.net/
+
 勾选自动更新，修改配置文件：
 勾选在线订阅转换，订阅转换服务地址clash-meta，订阅转换模板为自定义模板
 链接为：https://raw.githubusercontent.com/Aethersailor/Custom_OpenClash_Rules/main/cfg/Custom_Clash.ini
+
+https://mirror.ghproxy.com/https://raw.githubusercontent.com/yixuan-ovo/ImmortalWrt-Files/refs/heads/main/OpenClash/subscribe-ini/yx-clash.ini
+参考《一个链接同时实现配置模板和后端订阅转换》
+
 添加Emoji可开，UDP转发需要机场支持才可启用，否则无法过梯
 
 
