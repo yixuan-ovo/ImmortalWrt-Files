@@ -79,6 +79,8 @@ IPV6设置取消勾选，不使用IPV6
 
 GEO数据库订阅（也可使用默认）：
 geoipDat老版本数据库，文件太大，不采用
+geoipDat老版本数据库，文件太大，不采用
+geoipDat老版本数据库，文件太大，不采用
 
 geoip mmdb更新url:
 https://raw.githubusercontent.com/Loyalsoldier/geoip/release/Country.mmdb
@@ -106,6 +108,7 @@ DNS设置：
 若为桥接模式，暂定不需要勾选自定义dns服务器，可能会导致软件刚打开解析dns时间过长
 由此推断若为路由模式，则只需要自定义dns服务器为光猫dns，不需要追加上游dns
 2024.11.4取消勾选自定义服务器，保留追加上游dns不需要等待
+2024.11.5测试后发现关闭自定义DNS服务器、只保留追加上游DNS不需要加载等待（PPPOE拨号模式下），猜测如果为路由模式需要自定义DNS服务器，取消勾选追加上游DNS
 
 Meta设置：
 勾选启用TCP并发、启用统一延迟（为了测速好看，可开可不开）、Fake-IP持久化、启用流量(域名)探测、探测(嗅探)纯IP连接
