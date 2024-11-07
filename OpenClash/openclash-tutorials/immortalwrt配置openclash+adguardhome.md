@@ -41,21 +41,22 @@ luci-app-openclash			不解释
 # immortalwrt关闭ipv6:
 ## lan口
 网络-接口:删除wan6接口，编辑br-lan接口
-
+![img_1.png](img_1.png)
 DHCP服务器-ipv6设置:禁用三个ipv6服务，不勾选指定的主接口
-
+![img_2.png](img_2.png)
 全局网络选项删除ipv6地址
-
+![img_3.png](img_3.png)
 ## 网络-DHCP/DNS-过滤器
 勾选过滤ipv6 AAAA记录
-
+![img_4.png](img_4.png)
 以上之后，局域网设备就不会被分配ipv6地址了
 
 ## wan口
 br-lan的网段不可以和wan的网段相同
 
 接口配置wan口禁用获取ipv6地址
-
+![img_5.png](img_5.png)
+![img_6.png](img_6.png)
 ——————————————————*********************——————————————————
 
 # openclash插件设置:
@@ -70,12 +71,12 @@ br-lan的网段不可以和wan的网段相同
 勾选UDP流量转发
 
 代理模式Rule
-
+![img_7.png](img_7.png)
 ## 插件-流量控制
 勾选路由本机代理、禁用QUIC、绕过服务器地址、实验性绕过中国大陆IP（配置延迟低的dns）、仅允许内网
 
 仅允许内网下方选择wan接口名字为wan（个人配置不同）
-
+![img_8.png](img_8.png)
 ## 插件-DNS设置
 先选择使用Dnsmasq进行转发，彻底配置好之后选择停用
 
@@ -98,11 +99,13 @@ br-lan的网段不可以和wan的网段相同
 - DOMAIN-SUFFIX,google.com,（代理组名） #匹配域名后缀，意为xxx.google.com走代理
 - DOMAIN-KEYWORD,google,DIRECT（代理组名） #匹配域名关键字，意为域名含有google的走DIRECT
 - DOMAIN,google.com,DIRECT（代理组名） #匹配域名，意为全域名匹配成功的走DIRECT
-
+  ![img_9.png](img_9.png)
 ## 插件-IPV6设置
 取消勾选，不使用IPV6
+![img_10.png](img_10.png)
 
 ## 插件-GEO数据库订阅
+
 可以使用默认链接
 
 geoipDat老版本数据库，文件太大，不采用
@@ -121,7 +124,7 @@ geosite更新url:
 - https://cdn.jsdelivr.net/gh/Loyalsoldier/v2ray-rules-dat@release/geosite.dat
 
 每天或每周更新一次，设置完自定义URL后点击检查并更新进行更新，单纯点击保存配置没有用
-
+![img_11.png](img_11.png)
 ## 插件-大陆白名单订阅:
 勾选自动更新，其余默认即可
 
