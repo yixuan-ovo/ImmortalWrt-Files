@@ -10,7 +10,7 @@
 网络-DHCP/DNS-静态地址分配
 
 配置主机名和MAC地址绑定
-
+![img.png](img.png)
 自定义在线分流规则模板教程
 - https://www.youtube.com/watch?v=D841V_xgykg&list=PLSbqX2QvapHk7VYlbyHUIOonIl7q1n410&index=3
 
