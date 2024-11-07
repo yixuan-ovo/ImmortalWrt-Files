@@ -196,7 +196,9 @@ ruby_edit "$CONFIG_FILE" "['experimental']" "{'sniff-tls-sni'=>false}"
 
 ![img_17.png](img_17.png)
 
-# openclash规则附加
+# openclash规则附加:
+**_如图配置后，可以在无需重启openclash服务的情况下增加直连域名/ip_**
+
 ![img_18.png](img_18.png)
 
 ![img_19.png](img_19.png)
