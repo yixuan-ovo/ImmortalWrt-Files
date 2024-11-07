@@ -3,25 +3,25 @@
 
 11.5更新:
 增加测试结果-L120[DNS](#复写-dns设置)
+
 ————————————————————————————————************************************************————————————————————————————————
 
-
+## tips:
 网络-DHCP/DNS-静态地址分配
 配置主机名和MAC地址绑定
-
-————————————————************————————————————
 
 自定义在线分流规则模板教程:https://www.youtube.com/watch?v=D841V_xgykg&list=PLSbqX2QvapHk7VYlbyHUIOonIl7q1n410&index=3
 
 七尺宇openclash所需资料:https://qichiyu.blogspot.com/2024/07/openclash.html
 
-————————————————************————————————————
+openclash配置自定义策略集教程:https://github.com/Aethersailor/Custom_OpenClash_Rules/wiki/OpenClash-%E8%AE%BE%E7%BD%AE%E6%95%99%E7%A8%8B
 
-软件包替换源:
+
+## 软件包替换源:
 将源地址 https://downloads.immortalwrt.org 或 https://mirrors.vsean.net/openwrt
 更改为:https://mirrors.cernet.edu.cn/immortalwrt
 
-常用软件包名:
+## 常用软件包名:
 luci-app-argon		argon主题
 luci-app-adguardhome	自行github下载，链接:https://github.com/kongfl888/luci-app-adguardhome/releases，建议下载20221023，自带中文。最新版安装英文后再安装中文好像有冲突
 luci-app-arpbind		IP/MAC地址绑定
@@ -44,28 +44,22 @@ DHCP服务器-ipv6设置:禁用三个ipv6服务，不勾选指定的主接口
 br-lan的网段不可以和wan的网段相同
 接口配置wan口禁用获取ipv6地址
 
-
 ————————————————************————————————————
 
-openclash配置自定义策略集教程:https://github.com/Aethersailor/Custom_OpenClash_Rules/wiki/OpenClash-%E8%AE%BE%E7%BD%AE%E6%95%99%E7%A8%8B
+# openclash插件设置
 
-# openclash配置:
-插件设置
-
-————————******————————
-
-## 插件-模式设置:
+## 插件-模式设置
 勾选使用meta内核，需要提前下载并上传meta内核文件
 运行模式:Fake-IP(混合)模式
 网络栈类型:mixed
 勾选UDP流量转发
 代理模式Rule
 
-## 插件-流量控制:
+## 插件-流量控制
 勾选路由本机代理、禁用QUIC、绕过服务器地址、实验性绕过中国大陆IP（配置延迟低的dns）、仅允许内网
 仅允许内网下方选择wan接口名字为wan（个人配置不同）
 
-## 插件-DNS设置:
+## 插件-DNS设置
 先选择使用Dnsmasq进行转发，彻底配置好之后选择停用
 清理一下持久化缓存，勾选禁止Dnsmasq缓存DNS
 
@@ -87,7 +81,7 @@ openclash配置自定义策略集教程:https://github.com/Aethersailor/Custom_O
 ## 插件-IPV6设置
 取消勾选，不使用IPV6
 
-## 插件-GEO数据库订阅:
+## 插件-GEO数据库订阅
 可以使用默认链接
 geoipDat老版本数据库，文件太大，不采用
 geoipDat老版本数据库，文件太大，不采用
@@ -165,22 +159,22 @@ cd /usr/bin/AdGuardHome/data 为打开adguardhome数据文件夹。
 
 ————————————————************————————————————
 
-# AdgrardHome:
+# AdgrardHome
 工作目录不要修改到临时目录文件夹下，每次重启会消失
 （初次设置需更新核心版本，刚才让先开渠道是为了防止获取核心版本失败
 更新完后点击启用，重定向暂时先不用开启）
 
-点击web:3000跳转至初始化界面:
+## 初始化界面
 80端口改成8008（个人习惯更改），53端口（Dnsmasq默认占用端口）改为5335（个人习惯）
 设置账号密码后一直下一步进入后台主界面即可。
 
 ## 设置-常规设置
 常规设置下除了使用过滤器之外其余全部取消
 
-## 日志配置:
+## 日志配置
 勾选启用日志，时长建议24小时/7天或自行设置，若没有更改位置则建议关闭或24小时以下。
 
-## 统计配置:
+## 统计配置
 勾选启用统计数据，时长建议24小时或7天，太长会占用存储空间
 
 ## 设置-DNS设置
@@ -217,7 +211,8 @@ https://raw.githubusercontent.com/TG-Twilight/AWAvenue-Ads-Rule/main/AWAvenue-Ad
 https://raw.githubusercontent.com/BlueSkyXN/AdGuardHomeRules/master/all.txt
 
 
-## 等待彻底配置完后上游服务器输入127.0.0.1:7874，（此为openclash的默认端口，在openclash的系统设置里面查看）
+## 彻底配置完后
+上游服务器输入127.0.0.1:7874，（此为openclash的默认端口，在openclash的系统设置里面查看）
 （此时测试上游可能失败，不用管）
 
 此时回到设备后台选择作为dnsmasq的上游服务器就可以使用了
