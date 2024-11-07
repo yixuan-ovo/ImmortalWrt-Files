@@ -42,7 +42,7 @@ br-lan的网段不可以和wan的网段相同
 openclash配置自定义策略集教程：https://github.com/Aethersailor/Custom_OpenClash_Rules/wiki/OpenClash-%E8%AE%BE%E7%BD%AE%E6%95%99%E7%A8%8B
 
 openclash配置：
-插件设置：
+插件设置
 
 ————————******————————
 
@@ -102,6 +102,8 @@ openclash复写设置：
 路由模式下，在下方NameServer手动输入光猫显示的两个DNS，ping一下延迟低的在前面
 
 常规设置：全默认
+如果更新订阅出现【tmp/yaml_sub_tmp_config.yaml】下载失败等无法连接github错误
+可以在Github地址修改中自定义mirror前缀，链接参考《一个链接实现模板和订阅转换》
 
 DNS设置：
 勾选自定义dns服务器、追加上游dns、Fake-IP-Filter
