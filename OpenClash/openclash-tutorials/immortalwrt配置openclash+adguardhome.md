@@ -34,19 +34,20 @@ luci-app-arpbind			IP/MAC地址绑定
 
 luci-app-openclash			不解释
 
+——————————————————*********************——————————————————
 
 # immortalwrt关闭ipv6:
-## lan口:
+## lan口
 网络-接口:删除wan6接口，编辑br-lan接口:
 DHCP服务器-ipv6设置:禁用三个ipv6服务，不勾选指定的主接口
 全局网络选项删除ipv6地址
 
-## 网络-DHCP/DNS-过滤器:
+## 网络-DHCP/DNS-过滤器
 勾选过滤ipv6 AAAA记录
 
 以上之后，局域网设备就不会被分配ipv6地址了
 
-## wan口:
+## wan口
 br-lan的网段不可以和wan的网段相同
 接口配置wan口禁用获取ipv6地址
 
