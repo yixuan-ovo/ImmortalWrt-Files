@@ -89,7 +89,6 @@ br-lan的网段不可以和wan的网段相同
 
 - SRC-IP-CIDR,192.168.7.233/32,DIRECT	（意为7.233ip设备走直连
 - SRC-IP-CIDR,192.168.7.233/32,节点分组名	（意为7.233ip设备走指定节点分组。例如:- SRC-IP-CIDR,192.168.7.233/32,🚀 手动切换
-- 
 经测试发现黑白名单和自定义规则都可以实现不走代理
 
 区别在于黑白名单只能定义ip
@@ -105,6 +104,7 @@ br-lan的网段不可以和wan的网段相同
 
 ## 插件-GEO数据库订阅
 可以使用默认链接
+
 geoipDat老版本数据库，文件太大，不采用
 
 geoipDat老版本数据库，文件太大，不采用
@@ -125,6 +125,7 @@ geosite更新url:
 ## 插件-大陆白名单订阅:
 勾选自动更新，其余默认即可
 
+——————————————————*********************——————————————————
 
 # openclash复写设置:
 ## 复写-常规设置:
@@ -164,10 +165,7 @@ ruby_edit "$CONFIG_FILE" "['experimental']" "{'sniff-tls-sni'=>false}"
 
 # 勾选自动更新，修改配置文件:
 勾选在线订阅转换，订阅转换服务地址clash-meta，订阅转换模板为自定义模板
-
-链接为:https://raw.githubusercontent.com/Aethersailor/Custom_OpenClash_Rules/main/cfg/Custom_Clash.ini
-
-https://mirror.ghproxy.com/https://raw.githubusercontent.com/yixuan-ovo/ImmortalWrt-Files/refs/heads/main/OpenClash/subscribe-ini/yx-clash.ini
+- https://mirror.ghproxy.com/https://raw.githubusercontent.com/yixuan-ovo/ImmortalWrt-Files/refs/heads/main/OpenClash/subscribe-ini/yx-clash.ini
 
 参考《一个链接同时实现配置模板和后端订阅转换》
 
@@ -175,11 +173,13 @@ https://mirror.ghproxy.com/https://raw.githubusercontent.com/yixuan-ovo/Immortal
 
 
 # 系统-软件包下
-上传安装AdGuardHome时，若提示/etc/crontabs/root no such dirctory，输入mkdir -p /etc/crontabs即可。root检测文件地址
+上传安装AdGuardHome时，若提示/etc/crontabs/root no such dirctory，输入mkdir -p /etc/crontabs即可
+
+root检测文件地址:
 
 /etc/init.d/AdGuardHome status/restart/stop/start
 
-			（服务名称）	（控制命令）
+            （服务名称）  （控制命令）
 
 指定服务重启命令
 
