@@ -1,13 +1,14 @@
 11.7更新:
-修改复写设置-常规设置，增加github地址修改配置项-L112[复写常规设置](#复写-常规设置)
+修改复写设置-常规设置，增加github地址修改配置项-L112-[复写常规设置](#复写-常规设置)
 
 11.5更新:
-增加测试结果-L120[DNS](#复写-dns设置)
+增加测试结果-L120-[DNS](#复写-dns设置)
 
 ——————————————————*********************——————————————————
 
 ## tips:
 网络-DHCP/DNS-静态地址分配
+
 配置主机名和MAC地址绑定
 
 自定义在线分流规则模板教程:https://www.youtube.com/watch?v=D841V_xgykg&list=PLSbqX2QvapHk7VYlbyHUIOonIl7q1n410&index=3
@@ -19,15 +20,18 @@ openclash配置自定义策略集教程:https://github.com/Aethersailor/Custom_O
 
 ## 软件包替换源:
 将源地址 https://downloads.immortalwrt.org 或 https://mirrors.vsean.net/openwrt
+
 更改为:https://mirrors.cernet.edu.cn/immortalwrt
 
 ## 常用软件包名:
 luci-app-argon		argon主题
+
 luci-app-adguardhome	自行github下载，链接:https://github.com/kongfl888/luci-app-adguardhome/releases，建议下载20221023，自带中文。最新版安装英文后再安装中文好像有冲突
+
 luci-app-arpbind		IP/MAC地址绑定
+
 luci-app-openclash		不解释
 
-————————————————************————————————————
 
 # immortalwrt关闭ipv6:
 ## lan口:
@@ -44,7 +48,6 @@ DHCP服务器-ipv6设置:禁用三个ipv6服务，不勾选指定的主接口
 br-lan的网段不可以和wan的网段相同
 接口配置wan口禁用获取ipv6地址
 
-————————————————************————————————————
 
 # openclash插件设置
 
@@ -100,7 +103,6 @@ https://cdn.jsdelivr.net/gh/Loyalsoldier/v2ray-rules-dat@release/geosite.dat
 ## 插件-大陆白名单订阅:
 勾选自动更新，其余默认即可
 
-————————******————————
 
 # openclash复写设置:
 所有dns服务器取消勾选（桥接模式下，
@@ -141,8 +143,6 @@ https://mirror.ghproxy.com/https://raw.githubusercontent.com/yixuan-ovo/Immortal
 添加Emoji可开，UDP转发需要机场支持才可启用，否则无法过梯
 
 
-————————————————************————————————————
-
 # 系统-软件包下上传安装AdGuardHome时，若提示/etc/crontabs/root no such dirctory，输入mkdir -p /etc/crontabs即可。root检测文件地址
 
 /etc/init.d/AdGuardHome status/restart/stop/start
@@ -157,7 +157,6 @@ reboot  系统重启命令
 
 cd /usr/bin/AdGuardHome/data 为打开adguardhome数据文件夹。
 
-————————————————************————————————————
 
 # AdgrardHome
 工作目录不要修改到临时目录文件夹下，每次重启会消失
@@ -220,7 +219,7 @@ https://raw.githubusercontent.com/BlueSkyXN/AdGuardHomeRules/master/all.txt
 
 ————————————————************————————————————
 
-
+# 
 redir_host存在的问题:
 连接不是私密链接的原因:ip被污染，节点服务器无法根据被污染的ip访问指定网站。例如:假设google-ip为4.4.4.4，节点服务器向上请求谷歌首页ip获得5.5.5.5，此时拿5的ip去访问google则会出现网站证书和域名不匹配，显示为链接非私密。
 
