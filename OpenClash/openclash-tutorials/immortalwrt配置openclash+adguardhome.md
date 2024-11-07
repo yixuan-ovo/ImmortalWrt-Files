@@ -1,3 +1,10 @@
+11.7更新：
+修改复写设置-常规设置，增加github地址修改配置项-L112
+https://github.com/yixuan-ovo/ImmortalWrt-Files/blob/main/OpenClash/openclash-tutorials/immortalwrt%E9%85%8D%E7%BD%AEopenclash%2Badguardhome.md#L112
+
+————————————————————————————————************************************************————————————————————————————————
+
+
 网络-DHCP/DNS-静态地址分配
 配置主机名和MAC地址绑定
 
@@ -21,18 +28,18 @@ luci-app-openclash		不解释
 
 ————————————————************————————————————
 
-immortalwrt关闭ipv6：
-lan口：
+#immortalwrt关闭ipv6：
+##lan口：
 网络-接口：删除wan6接口，编辑br-lan接口：
 DHCP服务器-ipv6设置：禁用三个ipv6服务，不勾选指定的主接口
 全局网络选项删除ipv6地址
 
-网络-DHCP/DNS-过滤器：
+##网络-DHCP/DNS-过滤器：
 勾选过滤ipv6 AAAA记录
 
 以上之后，局域网设备就不会被分配ipv6地址了
 
-wan口：
+##wan口：
 br-lan的网段不可以和wan的网段相同
 接口配置wan口禁用获取ipv6地址
 
@@ -41,29 +48,29 @@ br-lan的网段不可以和wan的网段相同
 
 openclash配置自定义策略集教程：https://github.com/Aethersailor/Custom_OpenClash_Rules/wiki/OpenClash-%E8%AE%BE%E7%BD%AE%E6%95%99%E7%A8%8B
 
-openclash配置：
+#openclash配置：
 插件设置
 
 ————————******————————
 
-模式设置：
+##模式设置：
 勾选使用meta内核，需要提前下载并上传meta内核文件
 运行模式：Fake-IP(混合)模式
 网络栈类型：mixed
 勾选UDP流量转发
 代理模式Rule
 
-流量控制：
+##流量控制：
 勾选路由本机代理、禁用QUIC、绕过服务器地址、实验性绕过中国大陆IP（配置延迟低的dns）、仅允许内网
 仅允许内网下方选择wan接口名字为wan（个人配置不同）
 
-DNS设置：
+##DNS设置：
 先选择使用Dnsmasq进行转发，彻底配置好之后选择停用
 清理一下持久化缓存，勾选禁止Dnsmasq缓存DNS
 
-流媒体增强忽略
+##流媒体增强忽略
 
-黑白名单（复写设置-规则设置）：
+##黑白名单（复写设置-规则设置）：
 不走代理的wanip，设置该项为188，复写设置内编辑规则为
 - SRC-IP-CIDR,192.168.7.233/32,DIRECT	（意为7.233ip设备走直连
 - SRC-IP-CIDR,192.168.7.233/32,节点分组名	（意为7.233ip设备走指定节点分组。例如：- SRC-IP-CIDR,192.168.7.233/32,🚀 手动切换
@@ -75,9 +82,9 @@ DNS设置：
 - DOMAIN-KEYWORD,google,DIRECT（代理组名） #匹配域名关键字，意为域名含有google的走DIRECT
 - DOMAIN,google.com,DIRECT（代理组名） #匹配域名，意为全域名匹配成功的走DIRECT
 
-IPV6设置取消勾选，不使用IPV6
+##IPV6设置取消勾选，不使用IPV6
 
-GEO数据库订阅（也可使用默认）：
+##GEO数据库订阅（也可使用默认）：
 geoipDat老版本数据库，文件太大，不采用
 geoipDat老版本数据库，文件太大，不采用
 geoipDat老版本数据库，文件太大，不采用
@@ -92,41 +99,41 @@ https://cdn.jsdelivr.net/gh/Loyalsoldier/v2ray-rules-dat@release/geosite.dat
 
 每天或每周更新一次，设置完自定义URL后点击检查并更新进行更新，单纯点击保存配置没有用
 
-大陆白名单订阅：
+##大陆白名单订阅：
 勾选自动更新，其余默认即可
 
 ————————******————————
 
-openclash复写设置：
+#openclash复写设置：
 所有dns服务器取消勾选（桥接模式下，
 路由模式下，在下方NameServer手动输入光猫显示的两个DNS，ping一下延迟低的在前面
 
-常规设置：全默认
+##常规设置：
 如果更新订阅出现【tmp/yaml_sub_tmp_config.yaml】下载失败等无法连接github错误
 可以在Github地址修改中自定义mirror前缀，链接参考《一个链接实现模板和订阅转换》
 
-DNS设置：
+##DNS设置：
 勾选自定义dns服务器、追加上游dns、Fake-IP-Filter
 若为桥接模式，暂定不需要勾选自定义dns服务器，可能会导致软件刚打开解析dns时间过长
 由此推断若为路由模式，则只需要自定义dns服务器为光猫dns，不需要追加上游dns
 2024.11.4取消勾选自定义服务器，保留追加上游dns不需要等待
 2024.11.5测试后发现关闭自定义DNS服务器、只保留追加上游DNS不需要加载等待（PPPOE拨号模式下），猜测如果为路由模式需要自定义DNS服务器，取消勾选追加上游DNS
 
-Meta设置：
+##Meta设置：
 勾选启用TCP并发、启用统一延迟（为了测速好看，可开可不开）、Fake-IP持久化、启用流量(域名)探测、探测(嗅探)纯IP连接
 其余停用或不勾选
 
-规则设置：
+##规则设置：
 参考上方黑白名单
 
-开发者选项：
+##开发者选项：
 找到下方一行，将最后的true改成false，取消注释，嗅探TLS作用为：？
 ruby_edit "$CONFIG_FILE" "['experimental']" "{'sniff-tls-sni'=>false}"
 
-openclash配置订阅【漏网之鱼不能选全球直连！选择直连会泄露DNS。此时在绕过大陆ip选项的作用下，国内ip不会走clash内核】
+#openclash配置订阅【漏网之鱼不能选全球直连！选择直连会泄露DNS。此时在绕过大陆ip选项的作用下，国内ip不会走clash内核】
 测试dns泄露网站：https://ipleak.net/
 
-勾选自动更新，修改配置文件：
+#勾选自动更新，修改配置文件：
 勾选在线订阅转换，订阅转换服务地址clash-meta，订阅转换模板为自定义模板
 链接为：https://raw.githubusercontent.com/Aethersailor/Custom_OpenClash_Rules/main/cfg/Custom_Clash.ini
 
@@ -138,7 +145,7 @@ https://mirror.ghproxy.com/https://raw.githubusercontent.com/yixuan-ovo/Immortal
 
 ————————————————************————————————————
 
-系统-软件包下上传安装AdGuardHome时，若提示/etc/crontabs/root no such dirctory，输入mkdir -p /etc/crontabs即可。root检测文件地址
+#系统-软件包下上传安装AdGuardHome时，若提示/etc/crontabs/root no such dirctory，输入mkdir -p /etc/crontabs即可。root检测文件地址
 
 /etc/init.d/AdGuardHome status/restart/stop/start
 			（服务名称）	（控制命令）
@@ -146,7 +153,7 @@ https://mirror.ghproxy.com/https://raw.githubusercontent.com/yixuan-ovo/Immortal
 
 reboot  系统重启命令
 
-配置定时任务：vim /etc/contabs/root
+#配置定时任务：vim /etc/contabs/root
 50 5 * * * [ -f /usr/bin/AdGuardHome/data/querylog.json.1 ] && rm /usr/bin/AdGuardHome/data/querylog.json.1
 为每天五点五十分检测是否有querylog.json.1文件，有则删除
 
@@ -154,7 +161,7 @@ cd /usr/bin/AdGuardHome/data 为打开adguardhome数据文件夹。
 
 ————————————————************————————————————
 
-AdgrardHome：
+#AdgrardHome：
 工作目录不要修改到临时目录文件夹下，每次重启会消失
 （初次设置需更新核心版本，刚才让先开渠道是为了防止获取核心版本失败
 更新完后点击启用，重定向暂时先不用开启）
@@ -163,28 +170,28 @@ AdgrardHome：
 80端口改成8008（个人习惯更改），53端口（Dnsmasq默认占用端口）改为5335（个人习惯）
 设置账号密码后一直下一步进入后台主界面即可。
 
-1.设置-常规设置
+##1.设置-常规设置
 常规设置下除了使用过滤器之外其余全部取消
 
-2.日志配置：
+##2.日志配置：
 勾选启用日志，时长建议24小时/7天或自行设置，若没有更改位置则建议关闭或24小时以下。
 
-3.统计配置：
+##3.统计配置：
 勾选启用统计数据，时长建议24小时或7天，太长会占用存储空间
 
-4.设置-DNS设置
+##4.设置-DNS设置
 上游服务器首先默认不要动，选择并行请求
 bootstrap输入自己光猫后台测试过的两个dns即可，延迟低的写在第一个/或者写自己网上查询的延迟低的dns，其余取消。
 
-5.DNS服务配置
+##5.DNS服务配置
 速度限制改为0，勾选启用EDNS客户端子网、启用DNSSEC、禁用IPv6地址的解析
 
-6.DNS缓存配置
+##6.DNS缓存配置
 缓存大小根据自己设备缓存容量设置即可，默认4M
 勾选乐观缓存
 其余设置默认即可
 
-7.过滤器-黑名单
+##7.过滤器-黑名单
 删除默认的两个，自行添加规则即可
 
 广告终结者
@@ -206,7 +213,7 @@ https://raw.githubusercontent.com/TG-Twilight/AWAvenue-Ads-Rule/main/AWAvenue-Ad
 https://raw.githubusercontent.com/BlueSkyXN/AdGuardHomeRules/master/all.txt
 
 
-等待彻底配置完后上游服务器输入127.0.0.1:7874，（此为openclash的默认端口，在openclash的系统设置里面查看）
+##等待彻底配置完后上游服务器输入127.0.0.1:7874，（此为openclash的默认端口，在openclash的系统设置里面查看）
 （此时测试上游可能失败，不用管）
 
 此时回到设备后台选择作为dnsmasq的上游服务器就可以使用了
