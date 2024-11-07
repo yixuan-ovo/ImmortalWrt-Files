@@ -60,17 +60,23 @@ br-lan的网段不可以和wan的网段相同
 
 ## 插件-模式设置
 勾选使用meta内核，需要提前下载并上传meta内核文件
+
 运行模式:Fake-IP(混合)模式
+
 网络栈类型:mixed
+
 勾选UDP流量转发
+
 代理模式Rule
 
 ## 插件-流量控制
 勾选路由本机代理、禁用QUIC、绕过服务器地址、实验性绕过中国大陆IP（配置延迟低的dns）、仅允许内网
+
 仅允许内网下方选择wan接口名字为wan（个人配置不同）
 
 ## 插件-DNS设置
 先选择使用Dnsmasq进行转发，彻底配置好之后选择停用
+
 清理一下持久化缓存，勾选禁止Dnsmasq缓存DNS
 
 ## 插件-流媒体增强
@@ -78,15 +84,23 @@ br-lan的网段不可以和wan的网段相同
 
 ## 插件-黑白名单（复写设置-规则设置）:
 不走代理的wanip，设置该项为188，复写设置内编辑规则为
+
 - SRC-IP-CIDR,192.168.7.233/32,DIRECT	（意为7.233ip设备走直连
+- 
 - SRC-IP-CIDR,192.168.7.233/32,节点分组名	（意为7.233ip设备走指定节点分组。例如:- SRC-IP-CIDR,192.168.7.233/32,🚀 手动切换
+- 
 经测试发现黑白名单和自定义规则都可以实现不走代理
 
 区别在于黑白名单只能定义ip
+
 自定义规则可以定义域名:
+
 - DOMAIN-SUFFIX,google.com,（代理组名） #匹配域名后缀，意为xxx.google.com走代理
+- 
 - DOMAIN-KEYWORD,google,DIRECT（代理组名） #匹配域名关键字，意为域名含有google的走DIRECT
+- 
 - DOMAIN,google.com,DIRECT（代理组名） #匹配域名，意为全域名匹配成功的走DIRECT
+- 
 
 ## 插件-IPV6设置
 取消勾选，不使用IPV6
@@ -94,15 +108,22 @@ br-lan的网段不可以和wan的网段相同
 ## 插件-GEO数据库订阅
 可以使用默认链接
 geoipDat老版本数据库，文件太大，不采用
-geoipDat老版本数据库，文件太大，不采用
+
 geoipDat老版本数据库，文件太大，不采用
 
+geoipDat老版本数据库，文件太大，不采用
+
+
 geoip mmdb更新url:
+
 https://raw.githubusercontent.com/Loyalsoldier/geoip/release/Country.mmdb
+
 https://cdn.jsdelivr.net/gh/Loyalsoldier/geoip@release/Country.mmdb
 
 geosite更新url:
+
 https://github.com/Loyalsoldier/v2ray-rules-dat/releases/latest/download/geosite.dat
+
 https://cdn.jsdelivr.net/gh/Loyalsoldier/v2ray-rules-dat@release/geosite.dat
 
 每天或每周更新一次，设置完自定义URL后点击检查并更新进行更新，单纯点击保存配置没有用
