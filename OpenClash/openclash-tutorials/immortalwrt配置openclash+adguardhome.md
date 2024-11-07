@@ -72,15 +72,18 @@ br-lan的网段不可以和wan的网段相同
 
 代理模式Rule
 ![img_7.png](img_7.png)
+
 ## 插件-流量控制
 勾选路由本机代理、禁用QUIC、绕过服务器地址、实验性绕过中国大陆IP（配置延迟低的dns）、仅允许内网
 
 仅允许内网下方选择wan接口名字为wan（个人配置不同）
 ![img_8.png](img_8.png)
+
 ## 插件-DNS设置
 先选择使用Dnsmasq进行转发，彻底配置好之后选择停用
 
 清理一下持久化缓存，勾选禁止Dnsmasq缓存DNS
+![img_9.png](img_9.png)
 
 ## 插件-流媒体增强
 忽略
@@ -99,7 +102,7 @@ br-lan的网段不可以和wan的网段相同
 - DOMAIN-SUFFIX,google.com,（代理组名） #匹配域名后缀，意为xxx.google.com走代理
 - DOMAIN-KEYWORD,google,DIRECT（代理组名） #匹配域名关键字，意为域名含有google的走DIRECT
 - DOMAIN,google.com,DIRECT（代理组名） #匹配域名，意为全域名匹配成功的走DIRECT
-  ![img_9.png](img_9.png)
+
 ## 插件-IPV6设置
 取消勾选，不使用IPV6
 ![img_10.png](img_10.png)
@@ -125,8 +128,10 @@ geosite更新url:
 
 每天或每周更新一次，设置完自定义URL后点击检查并更新进行更新，单纯点击保存配置没有用
 ![img_11.png](img_11.png)
+
 ## 插件-大陆白名单订阅:
 勾选自动更新，其余默认即可
+![img_12.png](img_12.png)
 
 ——————————————————*********************——————————————————
 
@@ -135,6 +140,7 @@ geosite更新url:
 如果更新订阅出现【tmp/yaml_sub_tmp_config.yaml】下载失败等无法连接github错误
 
 可以在Github地址修改中自定义github的国内mirror前缀，链接参考《一个链接实现模板和订阅转换》
+![img_13.png](img_13.png)
 
 ## 复写-DNS设置:
 勾选Fake-ip持久化，Fake-IP-Filter
@@ -146,19 +152,28 @@ geosite更新url:
 2024.11.4取消勾选自定义服务器，保留追加上游dns不需要等待
 
 2024.11.5测试后发现关闭自定义DNS服务器、只保留追加上游DNS不需要加载等待（PPPOE拨号模式下），猜测如果为路由模式需要自定义DNS服务器，取消勾选追加上游DNS
+![img_14.png](img_14.png)
 
 ## 复写-Meta设置:
 勾选启用TCP并发、启用统一延迟（为了测速好看，可开可不开）、Fake-IP持久化、启用流量(域名)探测、探测(嗅探)纯IP连接
 
 其余停用或不勾选
+![img_15.png](img_15.png)
 
 ## 复写-规则设置:
 参考上方黑白名单
+![img_16.png](img_16.png)
 
 ## 复写-开发者选项:
 找到下方一行，将最后的true改成false，取消注释，嗅探TLS作用为:**？**
 
 ruby_edit "$CONFIG_FILE" "['experimental']" "{'sniff-tls-sni'=>false}"
+![img_17.png](img_17.png)
+
+# openclash规则附加
+![img_18.png](img_18.png)
+![img_19.png](img_19.png)
+![img_20.png](img_20.png)
 
 # openclash配置订阅
 【漏网之鱼不能选全球直连！选择直连会泄露DNS。此时在绕过大陆ip选项的作用下，国内ip不会走clash内核】
