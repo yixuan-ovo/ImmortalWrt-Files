@@ -11,17 +11,19 @@
 
 配置主机名和MAC地址绑定
 
-自定义在线分流规则模板教程:https://www.youtube.com/watch?v=D841V_xgykg&list=PLSbqX2QvapHk7VYlbyHUIOonIl7q1n410&index=3
+自定义在线分流规则模板教程
+- https://www.youtube.com/watch?v=D841V_xgykg&list=PLSbqX2QvapHk7VYlbyHUIOonIl7q1n410&index=3
 
-七尺宇openclash所需资料:https://qichiyu.blogspot.com/2024/07/openclash.html
+七尺宇openclash所需资料
+- https://qichiyu.blogspot.com/2024/07/openclash.html
 
-openclash配置自定义策略集教程:https://github.com/Aethersailor/Custom_OpenClash_Rules/wiki/OpenClash-%E8%AE%BE%E7%BD%AE%E6%95%99%E7%A8%8B
-
+openclash配置自定义策略集教程
+- https://github.com/Aethersailor/Custom_OpenClash_Rules/wiki/OpenClash-%E8%AE%BE%E7%BD%AE%E6%95%99%E7%A8%8B
 
 ## 软件包替换源:
 将源地址 https://downloads.immortalwrt.org 或 https://mirrors.vsean.net/openwrt
 
-更改为:https://mirrors.cernet.edu.cn/immortalwrt
+更改为 https://mirrors.cernet.edu.cn/immortalwrt
 
 ## 常用软件包名:
 luci-app-argon			argon主题
@@ -63,7 +65,7 @@ br-lan的网段不可以和wan的网段相同
 
 运行模式:Fake-IP(混合)模式
 
-网络栈类型:mixed
+网络栈类型:mixed(2024.11.7版本openclash仅剩meta内核)
 
 勾选UDP流量转发
 
@@ -86,7 +88,6 @@ br-lan的网段不可以和wan的网段相同
 不走代理的wanip，设置该项为188，复写设置内编辑规则为
 
 - SRC-IP-CIDR,192.168.7.233/32,DIRECT	（意为7.233ip设备走直连
-- 
 - SRC-IP-CIDR,192.168.7.233/32,节点分组名	（意为7.233ip设备走指定节点分组。例如:- SRC-IP-CIDR,192.168.7.233/32,🚀 手动切换
 - 
 经测试发现黑白名单和自定义规则都可以实现不走代理
@@ -96,11 +97,8 @@ br-lan的网段不可以和wan的网段相同
 自定义规则可以定义域名:
 
 - DOMAIN-SUFFIX,google.com,（代理组名） #匹配域名后缀，意为xxx.google.com走代理
-- 
 - DOMAIN-KEYWORD,google,DIRECT（代理组名） #匹配域名关键字，意为域名含有google的走DIRECT
-- 
 - DOMAIN,google.com,DIRECT（代理组名） #匹配域名，意为全域名匹配成功的走DIRECT
-- 
 
 ## 插件-IPV6设置
 取消勾选，不使用IPV6
@@ -115,16 +113,12 @@ geoipDat老版本数据库，文件太大，不采用
 
 
 geoip mmdb更新url:
-
-https://raw.githubusercontent.com/Loyalsoldier/geoip/release/Country.mmdb
-
-https://cdn.jsdelivr.net/gh/Loyalsoldier/geoip@release/Country.mmdb
+- https://raw.githubusercontent.com/Loyalsoldier/geoip/release/Country.mmdb
+- https://cdn.jsdelivr.net/gh/Loyalsoldier/geoip@release/Country.mmdb
 
 geosite更新url:
-
-https://github.com/Loyalsoldier/v2ray-rules-dat/releases/latest/download/geosite.dat
-
-https://cdn.jsdelivr.net/gh/Loyalsoldier/v2ray-rules-dat@release/geosite.dat
+- https://github.com/Loyalsoldier/v2ray-rules-dat/releases/latest/download/geosite.dat
+- https://cdn.jsdelivr.net/gh/Loyalsoldier/v2ray-rules-dat@release/geosite.dat
 
 每天或每周更新一次，设置完自定义URL后点击检查并更新进行更新，单纯点击保存配置没有用
 
@@ -133,34 +127,39 @@ https://cdn.jsdelivr.net/gh/Loyalsoldier/v2ray-rules-dat@release/geosite.dat
 
 
 # openclash复写设置:
-所有dns服务器取消勾选（桥接模式下，
-路由模式下，在下方NameServer手动输入光猫显示的两个DNS，ping一下延迟低的在前面
-
 ## 复写-常规设置:
 如果更新订阅出现【tmp/yaml_sub_tmp_config.yaml】下载失败等无法连接github错误
-可以在Github地址修改中自定义mirror前缀，链接参考《一个链接实现模板和订阅转换》
+
+可以在Github地址修改中自定义github的国内mirror前缀，链接参考《一个链接实现模板和订阅转换》
 
 ## 复写-DNS设置:
-勾选自定义dns服务器、追加上游dns、Fake-IP-Filter
-若为桥接模式，暂定不需要勾选自定义dns服务器，可能会导致软件刚打开解析dns时间过长
-由此推断若为路由模式，则只需要自定义dns服务器为光猫dns，不需要追加上游dns
+勾选Fake-ip持久化，Fake-IP-Filter
+
+**_若为桥接模式，暂定不需要勾选自定义dns服务器，可能会导致软件刚打开解析dns时间过长_**
+
+**_由此推断若为路由模式，则只需要自定义dns服务器为光猫dns，不需要追加上游dns_**
+
 2024.11.4取消勾选自定义服务器，保留追加上游dns不需要等待
+
 2024.11.5测试后发现关闭自定义DNS服务器、只保留追加上游DNS不需要加载等待（PPPOE拨号模式下），猜测如果为路由模式需要自定义DNS服务器，取消勾选追加上游DNS
 
 ## 复写-Meta设置:
 勾选启用TCP并发、启用统一延迟（为了测速好看，可开可不开）、Fake-IP持久化、启用流量(域名)探测、探测(嗅探)纯IP连接
+
 其余停用或不勾选
 
 ## 复写-规则设置:
 参考上方黑白名单
 
 ## 复写-开发者选项:
-找到下方一行，将最后的true改成false，取消注释，嗅探TLS作用为:？
+找到下方一行，将最后的true改成false，取消注释，嗅探TLS作用为:**？**
+
 ruby_edit "$CONFIG_FILE" "['experimental']" "{'sniff-tls-sni'=>false}"
 
 # openclash配置订阅
 【漏网之鱼不能选全球直连！选择直连会泄露DNS。此时在绕过大陆ip选项的作用下，国内ip不会走clash内核】
-测试dns泄露网站:https://ipleak.net/
+
+测试dns泄露网址：https://ipleak.net/
 
 
 # 勾选自动更新，修改配置文件:
@@ -179,14 +178,18 @@ https://mirror.ghproxy.com/https://raw.githubusercontent.com/yixuan-ovo/Immortal
 上传安装AdGuardHome时，若提示/etc/crontabs/root no such dirctory，输入mkdir -p /etc/crontabs即可。root检测文件地址
 
 /etc/init.d/AdGuardHome status/restart/stop/start
+
 			（服务名称）	（控制命令）
+
 指定服务重启命令
 
 reboot  系统重启命令
 
 # 配置定时任务:
 vim /etc/contabs/root
+
 50 5 * * * [ -f /usr/bin/AdGuardHome/data/querylog.json.1 ] && rm /usr/bin/AdGuardHome/data/querylog.json.1
+
 为每天五点五十分检测是否有querylog.json.1文件，有则删除
 
 cd /usr/bin/AdGuardHome/data 为打开adguardhome数据文件夹。
@@ -194,11 +197,14 @@ cd /usr/bin/AdGuardHome/data 为打开adguardhome数据文件夹。
 
 # AdgrardHome:
 工作目录不要修改到临时目录文件夹下，每次重启会消失
+
 （初次设置需更新核心版本，刚才让先开渠道是为了防止获取核心版本失败
+
 更新完后点击启用，重定向暂时先不用开启）
 
 ## 初始化界面
 80端口改成8008（个人习惯更改），53端口（Dnsmasq默认占用端口）改为5335（个人习惯）
+
 设置账号密码后一直下一步进入后台主界面即可。
 
 ## 设置-常规设置
@@ -212,40 +218,48 @@ cd /usr/bin/AdGuardHome/data 为打开adguardhome数据文件夹。
 
 ## 设置-DNS设置
 上游服务器首先默认不要动，选择并行请求
-bootstrap输入自己光猫后台测试过的两个dns即可，延迟低的写在第一个/或者写自己网上查询的延迟低的dns，其余取消。
+
+bootstrap输入自己光猫后台测试过的两个dns即可
+
+延迟低的写在第一个/或者写自己网上查询的延迟低的dns，其余取消。
 
 ## DNS服务配置
 速度限制改为0，勾选启用EDNS客户端子网、启用DNSSEC、禁用IPv6地址的解析
 
 ## DNS缓存配置
 缓存大小根据自己设备缓存容量设置即可，默认4M
+
 勾选乐观缓存
+
 其余设置默认即可
 
 ## 过滤器-黑名单
 删除默认的两个，自行添加规则即可
 
 广告终结者
-http://sub.adtchrome.com/adt-chinalist-easylist.txt
+- http://sub.adtchrome.com/adt-chinalist-easylist.txt
 
 EasyListChina
-https://easylist-downloads.adblockplus.org/easylistchina.txt
+- https://easylist-downloads.adblockplus.org/easylistchina.txt
 
 Anti-AD
-https://raw.githubusercontent.com/privacy-protection-tools/anti-AD/master/anti-ad-easylist.txt
+- https://raw.githubusercontent.com/privacy-protection-tools/anti-AD/master/anti-ad-easylist.txt
 
 屏蔽cookies相关的警告
-https://www.i-dont-care-about-cookies.eu/abp/
+- https://www.i-dont-care-about-cookies.eu/abp/
 
 秋风广告
-https://raw.githubusercontent.com/TG-Twilight/AWAvenue-Ads-Rule/main/AWAvenue-Ads-Rule.txt
+- https://raw.githubusercontent.com/TG-Twilight/AWAvenue-Ads-Rule/main/AWAvenue-Ads-Rule.txt
 
 百万ADH广告拦截过滤规则
-https://raw.githubusercontent.com/BlueSkyXN/AdGuardHomeRules/master/all.txt
+- https://raw.githubusercontent.com/BlueSkyXN/AdGuardHomeRules/master/all.txt
 
 
 ## 彻底配置完后
-上游服务器输入127.0.0.1:7874，（此为openclash的默认端口，在openclash的系统设置里面查看）
+上游服务器输入127.0.0.1:7874
+
+（此为openclash的默认端口，在openclash的系统设置里面查看）
+
 （此时测试上游可能失败，不用管）
 
 此时回到设备后台选择作为dnsmasq的上游服务器就可以使用了
