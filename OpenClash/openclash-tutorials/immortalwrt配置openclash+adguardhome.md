@@ -24,13 +24,15 @@ openclash配置自定义策略集教程:https://github.com/Aethersailor/Custom_O
 更改为:https://mirrors.cernet.edu.cn/immortalwrt
 
 ## 常用软件包名:
-luci-app-argon		argon主题
+luci-app-argon			argon主题
 
-luci-app-adguardhome	自行github下载，链接:https://github.com/kongfl888/luci-app-adguardhome/releases，建议下载20221023，自带中文。最新版安装英文后再安装中文好像有冲突
+luci-app-adguardhome		自行github下载，链接:https://github.com/kongfl888/luci-app-adguardhome/releases
 
-luci-app-arpbind		IP/MAC地址绑定
+建议下载20221023，自带中文。最新版安装英文后再安装中文好像有冲突
 
-luci-app-openclash		不解释
+luci-app-arpbind			IP/MAC地址绑定
+
+luci-app-openclash			不解释
 
 
 # immortalwrt关闭ipv6:
@@ -49,7 +51,7 @@ br-lan的网段不可以和wan的网段相同
 接口配置wan口禁用获取ipv6地址
 
 
-# openclash插件设置
+# openclash插件设置:
 
 ## 插件-模式设置
 勾选使用meta内核，需要提前下载并上传meta内核文件
@@ -130,20 +132,25 @@ https://cdn.jsdelivr.net/gh/Loyalsoldier/v2ray-rules-dat@release/geosite.dat
 找到下方一行，将最后的true改成false，取消注释，嗅探TLS作用为:？
 ruby_edit "$CONFIG_FILE" "['experimental']" "{'sniff-tls-sni'=>false}"
 
-# openclash配置订阅【漏网之鱼不能选全球直连！选择直连会泄露DNS。此时在绕过大陆ip选项的作用下，国内ip不会走clash内核】
+# openclash配置订阅
+【漏网之鱼不能选全球直连！选择直连会泄露DNS。此时在绕过大陆ip选项的作用下，国内ip不会走clash内核】
 测试dns泄露网站:https://ipleak.net/
+
 
 # 勾选自动更新，修改配置文件:
 勾选在线订阅转换，订阅转换服务地址clash-meta，订阅转换模板为自定义模板
+
 链接为:https://raw.githubusercontent.com/Aethersailor/Custom_OpenClash_Rules/main/cfg/Custom_Clash.ini
 
 https://mirror.ghproxy.com/https://raw.githubusercontent.com/yixuan-ovo/ImmortalWrt-Files/refs/heads/main/OpenClash/subscribe-ini/yx-clash.ini
+
 参考《一个链接同时实现配置模板和后端订阅转换》
 
 添加Emoji可开，UDP转发需要机场支持才可启用，否则无法过梯
 
 
-# 系统-软件包下上传安装AdGuardHome时，若提示/etc/crontabs/root no such dirctory，输入mkdir -p /etc/crontabs即可。root检测文件地址
+# 系统-软件包下
+上传安装AdGuardHome时，若提示/etc/crontabs/root no such dirctory，输入mkdir -p /etc/crontabs即可。root检测文件地址
 
 /etc/init.d/AdGuardHome status/restart/stop/start
 			（服务名称）	（控制命令）
@@ -151,14 +158,15 @@ https://mirror.ghproxy.com/https://raw.githubusercontent.com/yixuan-ovo/Immortal
 
 reboot  系统重启命令
 
-# 配置定时任务:vim /etc/contabs/root
+# 配置定时任务:
+vim /etc/contabs/root
 50 5 * * * [ -f /usr/bin/AdGuardHome/data/querylog.json.1 ] && rm /usr/bin/AdGuardHome/data/querylog.json.1
 为每天五点五十分检测是否有querylog.json.1文件，有则删除
 
 cd /usr/bin/AdGuardHome/data 为打开adguardhome数据文件夹。
 
 
-# AdgrardHome
+# AdgrardHome:
 工作目录不要修改到临时目录文件夹下，每次重启会消失
 （初次设置需更新核心版本，刚才让先开渠道是为了防止获取核心版本失败
 更新完后点击启用，重定向暂时先不用开启）
@@ -219,20 +227,33 @@ https://raw.githubusercontent.com/BlueSkyXN/AdGuardHomeRules/master/all.txt
 
 ————————————————************————————————————
 
-# 
-redir_host存在的问题:
-连接不是私密链接的原因:ip被污染，节点服务器无法根据被污染的ip访问指定网站。例如:假设google-ip为4.4.4.4，节点服务器向上请求谷歌首页ip获得5.5.5.5，此时拿5的ip去访问google则会出现网站证书和域名不匹配，显示为链接非私密。
+# :
+## redir_host存在的问题
+连接不是私密链接的原因:ip被污染，节点服务器无法根据被污染的ip访问指定网站。
 
-fake-ip:
+例如:假设google-ip为4.4.4.4，节点服务器向上请求谷歌首页ip获得5.5.5.5，此时拿5的ip去访问google则会出现网站证书和域名不匹配，显示为链接非私密。
+
+## fake-ip
 浏览器发起dns请求，请求获取谷歌的ip，请求向上走到路由器，
+
 此时clash劫持该请求，此时模式为fake-ip模式，所以路由器从自身ip段选择一个fake-ip返回给浏览器，
+
 并且于映射表记录fake-ip和域名的映射关系，
+
 浏览器拿到这个fakeip之后，向这个fakeip发起谷歌的dns请求。
+
 请求来到路由器之后clash根据该fakeip在对应表中查询对应的域名，使用域名进行规则匹配，根据google.com这个域名匹配到的规则决定走代理还是走直连。
+
 此时根据规则把谷歌的域名交给远程节点服务器进行dns解析获取真实的谷歌ip（相当于将原来需要在本地做的dns解析放在了远程服务器，不存在dns泄露，少了一次dns请求，降低了延迟）
 
-缺点为:某一次获取到了百度的fakeip，此时clash闪退，但电脑上缓存了百度的假ip。再次访问百度时会访问fakeip，此时将会无法访问。
+## 缺点为
+
+某一次获取到了百度的fakeip，此时clash闪退，但电脑上缓存了百度的假ip。再次访问百度时会访问fakeip，此时将会无法访问。
+
 虽然clash将ttl缓存设置为1s，但是程序不一定会遵守ttl的规定，为了防止频繁发起dns请求，可能会延长缓存时间。
+
 还有一些程序会开启dns重绑保护，如果获取到私有ip则会认为非法dns劫持导致数据包丢弃，典型例子为:windows使用fakeip时电脑有网，但是联网图标显示没网。
+
 解决办法是加入fake-ip-filter，放在里面的域名列表不会返回假的ip，会发起dns请求获取真实的ip地址，相当于这些域名的处理回退到redir-host模式。
+
 另外由于udp在某些场景下必须使用真实ip，所以clash处理udp域名，即使使用fakeip模式也会发起dns请求，例如QUIC功能，解决办法是禁用浏览器的quic功能。
