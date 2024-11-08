@@ -1,3 +1,6 @@
+11.8 更新：
+增加[这里的](#openclash规则附加)截图
+
 11.7 19:09更新：
 增加配置截图，增加[规则附加](#openclash规则附加)配置项
 
@@ -110,8 +113,13 @@ br-lan的网段不可以和wan的网段相同
 ## 插件-黑白名单（复写设置-规则设置）:
 不走代理的wanip，设置该项为188，复写设置内编辑规则为
 
-- SRC-IP-CIDR,192.168.7.233/32,DIRECT	（意为7.233ip设备走直连
-- SRC-IP-CIDR,192.168.7.233/32,节点分组名	（意为7.233ip设备走指定节点分组。例如:- SRC-IP-CIDR,192.168.7.233/32,🚀 手动切换
+- SRC-IP-CIDR,192.168.7.233/32,DIRECT	
+
+（意为7.233ip设备走直连
+
+- SRC-IP-CIDR,192.168.7.233/32,节点分组名	
+
+（意为7.233ip设备走指定节点分组。例如:- SRC-IP-CIDR,192.168.7.233/32,🚀 手动切换
 经测试发现黑白名单和自定义规则都可以实现不走代理
 
 区别在于黑白名单只能定义ip
@@ -130,12 +138,7 @@ br-lan的网段不可以和wan的网段相同
 ## 插件-GEO数据库订阅
 可以使用默认链接
 
-geoipDat老版本数据库，文件太大，不采用
-
-geoipDat老版本数据库，文件太大，不采用
-
-geoipDat老版本数据库，文件太大，不采用
-
+<font size=3 color=#FA8072>geoipDat老版本数据库，文件太大，不采用</font>
 
 geoip mmdb更新url:
 - https://raw.githubusercontent.com/Loyalsoldier/geoip/release/Country.mmdb
@@ -158,18 +161,18 @@ geosite更新url:
 
 # openclash复写设置:
 ## 复写-常规设置:
-如果更新订阅出现【tmp/yaml_sub_tmp_config.yaml】下载失败等无法连接github错误
+<font size=3 color=#EEA2AD>如果更新订阅出现【tmp/yaml_sub_tmp_config.yaml】下载失败等无法连接github错误
 
-可以在Github地址修改中自定义github的国内mirror前缀，链接参考《一个链接实现模板和订阅转换》
+可以在Github地址修改中自定义github的国内mirror前缀，链接参考《一个链接实现模板和订阅转换》</font>
 
 ![img_13.png](img_13.png)
 
 ## 复写-DNS设置:
 勾选Fake-ip持久化，Fake-IP-Filter
 
-**_若为桥接模式，暂定不需要勾选自定义dns服务器，可能会导致软件刚打开解析dns时间过长_**
+<font size=3 color=#EEA2AD>**_若为桥接模式，暂定不需要勾选自定义dns服务器，可能会导致软件刚打开解析dns时间过长_**
 
-**_由此推断若为路由模式，则只需要自定义dns服务器为光猫dns，不需要追加上游dns_**
+**_由此推断若为路由模式，则只需要自定义dns服务器为光猫dns，不需要追加上游dns_**</font>
 
 2024.11.4取消勾选自定义服务器，保留追加上游dns不需要等待
 
@@ -197,11 +200,15 @@ ruby_edit "$CONFIG_FILE" "['experimental']" "{'sniff-tls-sni'=>false}"
 ![img_17.png](img_17.png)
 
 # openclash规则附加:
-**_如图配置后，可以在无需重启openclash服务的情况下增加直连域名/ip_**
-
-![img_18.png](img_18.png)
+<font size=3 color=#EEA2AD>**_如图配置后，可以在无需重启openclash服务的情况下增加直连域名/ip_**</font>
 
 ![img_19.png](img_19.png)
+
+![img_21.png](img_21.png)
+
+<font size=3>此时在管理规则集文件列表里面找到自己新建的规则，点击进去直接加入想要走直连的域名即可</font>
+
+![img_18.png](img_18.png)
 
 ![img_20.png](img_20.png)
 
@@ -213,9 +220,8 @@ ruby_edit "$CONFIG_FILE" "['experimental']" "{'sniff-tls-sni'=>false}"
 
 # 勾选自动更新，修改配置文件:
 勾选在线订阅转换，订阅转换服务地址clash-meta，订阅转换模板为自定义模板
-- https://mirror.ghproxy.com/https://raw.githubusercontent.com/yixuan-ovo/ImmortalWrt-Files/refs/heads/main/OpenClash/subscribe-ini/yx-clash.ini
-
-参考《一个链接同时实现配置模板和后端订阅转换》
+-     https://mirror.ghproxy.com/https://raw.githubusercontent.com/yixuan-ovo/ImmortalWrt-Files/refs/heads/main/OpenClash/subscribe-ini/yx-clash.ini
+      参考《一个链接同时实现配置模板和后端订阅转换》
 
 添加Emoji可开，UDP转发需要机场支持才可启用，否则无法过梯
 
@@ -225,22 +231,21 @@ ruby_edit "$CONFIG_FILE" "['experimental']" "{'sniff-tls-sni'=>false}"
 
 root检测文件地址:
 
-/etc/init.d/AdGuardHome status/restart/stop/start
-
-            （服务名称）  （控制命令）
+-     /etc/init.d/AdGuardHome status/restart/stop/start
+                （服务名称）  （控制命令）
 
 指定服务重启命令
 
 reboot  系统重启命令
 
 # 配置定时任务:
-vim /etc/contabs/root
+-     vim /etc/contabs/root
 
-50 5 * * * [ -f /usr/bin/AdGuardHome/data/querylog.json.1 ] && rm /usr/bin/AdGuardHome/data/querylog.json.1
+-     50 5 * * * [ -f /usr/bin/AdGuardHome/data/querylog.json.1 ] && rm /usr/bin/AdGuardHome/data/querylog.json.1
+      每天五点五十分检测是否有querylog.json.1文件，有则删除
 
-为每天五点五十分检测是否有querylog.json.1文件，有则删除
-
-cd /usr/bin/AdGuardHome/data 为打开adguardhome数据文件夹。
+-     cd /usr/bin/AdGuardHome/data
+      为打开adguardhome数据文件夹。
 
 
 # AdgrardHome:
