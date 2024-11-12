@@ -1,3 +1,6 @@
+11.12更新：
+修改[dns](#复写-dns设置)获取方式
+
 11.8 更新：
 增加[这里的](#openclash规则附加)截图
 
@@ -170,15 +173,27 @@ geosite更新url:
 ## 复写-DNS设置:
 勾选Fake-ip持久化，Fake-IP-Filter
 
-<font size=3 color=#EEA2AD>**_若为桥接模式，暂定不需要勾选自定义dns服务器，可能会导致软件刚打开解析dns时间过长_**
+~~<font size=3 color=#EEA2AD>**_若为桥接模式，暂定不需要勾选自定义dns服务器，可能会导致软件刚打开解析dns时间过长_**~~
 
-**_由此推断若为路由模式，则只需要自定义dns服务器为光猫dns，不需要追加上游dns_**</font>
+~~**_由此推断若为路由模式，则只需要自定义dns服务器为光猫dns，不需要追加上游dns_**</font>~~
+
+![img_14.png](img_14.png)
 
 2024.11.4取消勾选自定义服务器，保留追加上游dns不需要等待
 
 2024.11.5测试后发现关闭自定义DNS服务器、只保留追加上游DNS不需要加载等待（PPPOE拨号模式下），猜测如果为路由模式需要自定义DNS服务器，取消勾选追加上游DNS
 
-![img_14.png](img_14.png)
+2024.11.11根据如下教程修改dns：
+
+![img_22.png](img_22.png)
+
+![img_23.png](img_23.png)
+
+<font size=3>使用[DNS优选软件](https://github.com/yixuan-ovo/TutorialFiles/blob/main/Software-exe/DNS%E4%BC%98%E9%80%89.exe)测试得知延迟最低的并非为运营商dns，所以修改为下图配置：</font>
+
+![img_24.png](img_24.png)
+
+![img_25.png](img_25.png)
 
 ## 复写-Meta设置:
 勾选启用TCP并发、启用统一延迟（为了测速好看，可开可不开）、Fake-IP持久化、启用流量(域名)探测、探测(嗅探)纯IP连接
