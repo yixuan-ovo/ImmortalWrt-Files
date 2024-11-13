@@ -200,7 +200,8 @@ geosite更新url:
 
 ![img_23.png](img_23.png)
 
-<font size=3>使用[DNS优选软件](https://github.com/yixuan-ovo/TutorialFiles/blob/main/Software-exe/DNS%E4%BC%98%E9%80%89.exe)测试得知延迟最低的并非为运营商dns，所以修改为下图配置：</font>
+<font size=3>使用[DNS优选软件](https://github.com/yixuan-ovo/TutorialFiles/blob/main/Software-exe/DNS%E4%BC%98%E9%80%89.exe)
+测试得知延迟最低的并非为运营商dns，所以修改为下图配置：</font>
 
 ![img_24.png](img_24.png)
 
@@ -208,11 +209,14 @@ geosite更新url:
 
 2024.11.13：
 
-又改回去了......现在依旧是关闭自定义DNS服务器，保留追加上游DNS，否则还是会出现刚打开例如Gmail等应用初始无网络连接
+又改回去了......
+现在依旧是关闭自定义DNS服务器，保留追加上游DNS，否则还是会出现刚打开例如Gmail等应用初始无网络连接
 需要等待一分多钟才可以正常访问的情况
 #### *缺点是可能造成dns污染*
 
 等待解决
+
+~~等待尝试勾选自定义上游服务器+nameserver填写223.5.5.5，同时勾选追加上游dns的效果~~
 
 ## 复写-Meta设置:
 勾选启用TCP并发、启用统一延迟（为了测速好看，可开可不开）、Fake-IP持久化、启用流量(域名)探测、探测(嗅探)纯IP连接
