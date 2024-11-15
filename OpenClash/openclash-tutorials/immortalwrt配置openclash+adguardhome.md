@@ -32,7 +32,7 @@
 
 配置主机名和MAC地址绑定
 
-![img.png](img.png)
+![img.png](./img/img.png)
 
 自定义在线分流规则模板教程
 - https://www.youtube.com/watch?v=D841V_xgykg&list=PLSbqX2QvapHk7VYlbyHUIOonIl7q1n410&index=3
@@ -65,20 +65,20 @@ luci-app-openclash			不解释
 ## lan口
 网络-接口:删除wan6接口，编辑br-lan接口
 
-![img_1.png](img_1.png)
+![img_1.png](./img/img_1.png)
 
 DHCP服务器-ipv6设置:禁用三个ipv6服务，不勾选指定的主接口
 
-![img_2.png](img_2.png)
+![img_2.png](./img/img_2.png)
 
 全局网络选项删除ipv6地址
 
-![img_3.png](img_3.png)
+![img_3.png](./img/img_3.png)
 
 ## 网络-DHCP/DNS-过滤器
 勾选过滤ipv6 AAAA记录
 
-![img_4.png](img_4.png)
+![img_4.png](./img/img_4.png)
 
 以上之后，局域网设备就不会被分配ipv6地址了
 
@@ -87,9 +87,9 @@ br-lan的网段不可以和wan的网段相同
 
 接口配置wan口禁用获取ipv6地址
 
-![img_5.png](img_5.png)
+![img_5.png](./img/img_5.png)
 
-![img_6.png](img_6.png)
+![img_6.png](./img/img_6.png)
 
 ——————————————————*********************——————————————————
 
@@ -106,21 +106,21 @@ br-lan的网段不可以和wan的网段相同
 
 代理模式Rule
 
-![img_7.png](img_7.png)
+![img_7.png](./img/img_7.png)
 
 ## 插件-流量控制
 勾选路由本机代理、禁用QUIC、绕过服务器地址、实验性绕过中国大陆IP（配置延迟低的dns）、仅允许内网
 
 仅允许内网下方选择wan接口名字为wan（个人配置不同）
 
-![img_8.png](img_8.png)
+![img_8.png](./img/img_8.png)
 
 ## 插件-DNS设置
 先选择使用Dnsmasq进行转发，彻底配置好之后选择停用
 
 清理一下持久化缓存，勾选禁止Dnsmasq缓存DNS
 
-![img_9.png](img_9.png)
+![img_9.png](./img/img_9.png)
 
 ## 插件-流媒体增强
 忽略
@@ -148,7 +148,7 @@ br-lan的网段不可以和wan的网段相同
 ## 插件-IPV6设置
 取消勾选，不使用IPV6
 
-![img_10.png](img_10.png)
+![img_10.png](./img/img_10.png)
 
 ## 插件-GEO数据库订阅
 可以使用默认链接
@@ -165,12 +165,12 @@ geosite更新url:
 
 每天或每周更新一次，设置完自定义URL后点击检查并更新进行更新，单纯点击保存配置没有用
 
-![img_11.png](img_11.png)
+![img_11.png](./img/img_11.png)
 
 ## 插件-大陆白名单订阅:
 勾选自动更新，其余默认即可
 
-![img_12.png](img_12.png)
+![img_12.png](./img/img_12.png)
 
 ——————————————————*********************——————————————————
 
@@ -180,7 +180,7 @@ geosite更新url:
 
 可以在Github地址修改中自定义github的国内mirror前缀，链接参考《一个链接实现模板和订阅转换》</font>
 
-![img_13.png](img_13.png)
+![img_13.png](./img/img_13.png)
 
 ## 复写-DNS设置:
 勾选Fake-ip持久化，Fake-IP-Filter
@@ -189,7 +189,7 @@ geosite更新url:
 
 ~~**_由此推断若为路由模式，则只需要自定义dns服务器为光猫dns，不需要追加上游dns_**</font>~~
 
-![img_14.png](img_14.png)
+![img_14.png](./img/img_14.png)
 
 ### DNS调试日志
 
@@ -205,16 +205,16 @@ geosite更新url:
 
 根据如下教程修改dns：
 
-![img_22.png](img_22.png)
+![img_22.png](./img/img_22.png)
 
-![img_23.png](img_23.png)
+![img_23.png](./img/img_23.png)
 
 <font size=3>使用[DNS优选软件](https://github.com/yixuan-ovo/TutorialFiles/blob/main/Software-exe/DNS%E4%BC%98%E9%80%89.exe)
 测试得知延迟最低的并非为运营商dns，所以修改为下图配置：</font>
 
-![img_24.png](img_24.png)
+![img_24.png](./img/img_24.png)
 
-![img_25.png](img_25.png)
+![img_25.png](./img/img_25.png)
 
 #### 2024.11.13：
 
@@ -231,11 +231,11 @@ geosite更新url:
 
 使用DnsTools软件测量得到比223.5.5.5延迟更低的dns
 
-![alt text](062b41dd308dd5a401688ec85b48699.png)
+![alt text](./img/062b41dd308dd5a401688ec85b48699.png)
 
 所以将wan口pppoe自动获取dns取消，改为手动
 
-![alt text](image.png)
+![alt text](./img/image.png)
 
 同时测试了勾选自定义dns上游服务器和追加上游dns，效果依旧会初始无连接，此方案暂时抛弃
 
@@ -243,7 +243,7 @@ geosite更新url:
 
 测试在保持勾选追加上游dns时，勾与不勾选自定义上游，**发现在配置文件内nameserver无变化**，没有答案等待学习...
 
-![alt text](c6d52ad1298348ca867804e956523c8.png)
+![alt text](./img/c6d52ad1298348ca867804e956523c8.png)
 
 发现一个问题：通过修改[这里](#openclash规则附加)无法实现域名的单独配置，等待寻找答案
 
@@ -261,7 +261,7 @@ geosite更新url:
 
 发现一个新的提示，意义不明：
 
-![alt text](image-1.png)
+![alt text](./img/image-1.png)
 
 #### 2024.11.15
 
@@ -272,32 +272,32 @@ geosite更新url:
 
 其余停用或不勾选
 
-![img_15.png](img_15.png)
+![img_15.png](./img/img_15.png)
 
 ## 复写-规则设置:
 参考上方黑白名单
 
-![img_16.png](img_16.png)
+![img_16.png](./img/img_16.png)
 
 ## 复写-开发者选项:
 找到下方一行，将最后的true改成false，取消注释，嗅探TLS作用为:**？**
 
 ruby_edit "$CONFIG_FILE" "['experimental']" "{'sniff-tls-sni'=>false}"
 
-![img_17.png](img_17.png)
+![img_17.png](./img/img_17.png)
 
 # openclash规则附加:
 <font size=3 color=#EEA2AD>**_如图配置后，可以在无需重启openclash服务的情况下增加直连域名/ip_**</font>
 
-![img_19.png](img_19.png)
+![img_19.png](./img/img_19.png)
 
-![img_21.png](img_21.png)
+![img_21.png](./img/img_21.png)
 
 <font size=3>此时在管理规则集文件列表里面找到自己新建的规则，点击进去直接加入想要走直连的域名即可</font>
 
-![img_18.png](img_18.png)
+![img_18.png](./img/img_18.png)
 
-![img_20.png](img_20.png)
+![img_20.png](./img/img_20.png)
 
 # openclash配置订阅
 【漏网之鱼不能选全球直连！选择直连会泄露DNS。此时在绕过大陆ip选项的作用下，国内ip不会走clash内核】

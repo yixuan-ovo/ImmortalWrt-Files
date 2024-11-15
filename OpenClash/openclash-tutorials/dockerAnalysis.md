@@ -3,7 +3,7 @@
 ————————————**********————————————
 
 # Docker Desktop安装之前建议启用，不建议用Hype-v
-![alt text](image-2.png)
+![alt text](./img/image-2.png)
 
 # Docker Desktop安装教程不再赘述
 **_需要梯子，不然可能获取不到镜像。也可以自行更改镜像，操作如下：_**
@@ -11,11 +11,11 @@
 右上角打开Settings
 
 选择Docker Engine，初始状态如下：
-![alt text](image-3.png)
+![alt text](./img/image-3.png)
 
 修改为：
 
-![](image-4.png)
+![](./img/image-4.png)
 
 保存重启
 
@@ -31,12 +31,12 @@
 
     docker run -d --name (自己写) --restart=always -p 25500:25500 tindy2013/subconverter:latest
 
-![](image-5.png)
+![](./img/image-5.png)
 
 此时输入
  - curl http://localhost:25500/version
 
-![alt text](image-6.png)
+![alt text](./img/image-6.png)
 
 说明服务已经正常运行，如果没有特殊的需求。~~不知道自己有没有就是没有~~
 
@@ -44,7 +44,7 @@
 
 点击Name进入容器内部
 
-![alt text](image-7.png)
+![alt text](./img/image-7.png)
 
 路径：
 - /base/pref.example.ini
@@ -57,7 +57,7 @@
 
 通过cmd输入docker ps，查看正在运行中的容器id
 
-![alt text](image-8.png)
+![alt text](./img/image-8.png)
 
 **重点注意CONTAINER ID，一般需要前四位。COMMAND的路径为/bin/sh,进入容器时需要输入sh作为directory**
 
@@ -79,7 +79,7 @@
 
 ### **成功：**
 
-![alt text](image-10.png)
+![alt text](./img/image-10.png)
 
 ![alt text](./img/image-9.png)
 
