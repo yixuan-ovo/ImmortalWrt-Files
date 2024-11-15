@@ -12,7 +12,7 @@ luci-app-argon主题替换壁纸
 ## 4.Immortalwrt下
 官方镜像版本、系统配置文件备份
 
-## 5.openlash下
+## 5.OpenClash下
 
 nwhe文件夹下为meta内核文件（待更新
 
