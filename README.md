@@ -1,6 +1,6 @@
 # 储存immortalwrt相关内容，按文件夹分类存储
 
-## 1.AsGuradHome
+## 1.AdGuradHome
 存储最后一个中文版本安装包及拦截规则
 
 ## 2.Aron Wallpaper
