@@ -84,3 +84,26 @@
 ![alt text](./img/image-9.png)
 
 # Docker Linux
+
+## docker国内镜像源无法使用问题参考
+## - https://github.com/yixuan-ovo/docker_image_pusher
+
+## 拉取镜像并启动(没梯子不要用，用上面的教程)
+
+-     docker pull tindy2013/subconverter
+
+-     docker run -d --name (自己写) --restart=always -p 25500:25500 tindy2013/subconverter
+
+![alt text](./img/image_26.png)
+
+此时容器已经启用，输入
+
+    curl http://localhost:25500/version
+
+![alt text](./img/image_27.png)
+
+说明成功部署，可以在自定义订阅链接转换处使用
+
+http://（你的linux ip地址）:25500/sub
+
+来转换订阅链接
